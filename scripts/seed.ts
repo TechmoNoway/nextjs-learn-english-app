@@ -24,53 +24,47 @@ const main = async () => {
       { id: 2, title: "French", imageSrc: "/fr.svg" },
       { id: 1, title: "Spanish", imageSrc: "/es.svg" },
       { id: 4, title: "Italian", imageSrc: "/it.svg" },
+      { id: 5, title: "United Kingdom", imageSrc: "/uk.svg" },
     ]);
 
     await db.insert(schema.units).values([
       {
-        id: 1,
-        courseId: 1,
+        id: 5,
+        courseId: 5,
         title: "Unit 1",
-        description: "Learn the basic of Spanish",
+        description: "Learn the basic of English",
         order: 1,
       },
-      // {
-      //   id: 2,
-      //   courseId: 1,
-      //   title: "Unit 1",
-      //   description: "Learn the basic of Spanish",
-      //   order: 1,
-      // },
     ]);
 
     await db.insert(schema.lessons).values([
       {
-        id: 1,
-        unitId: 1, // Unit 1 learn the basic of Spanish
+        id: 6,
+        unitId: 5, // Unit 1 learn the basic of English
         order: 1,
         title: "Nouns",
       },
       {
-        id: 2,
-        unitId: 1, // Unit 1 learn the basic of Spanish
+        id: 7,
+        unitId: 5, // Unit 1 learn the basic of English
         order: 2,
         title: "Verbs",
       },
       {
-        id: 3,
-        unitId: 1, // Unit 1 learn the basic of Spanish
+        id: 8,
+        unitId: 5, // Unit 1 learn the basic of English
         order: 3,
         title: "Verbs",
       },
       {
-        id: 4,
-        unitId: 1, // Unit 1 learn the basic of Spanish
+        id: 9,
+        unitId: 5, // Unit 1 learn the basic of English
         order: 4,
         title: "Verbs",
       },
       {
-        id: 5,
-        unitId: 1, // Unit 1 learn the basic of Spanish
+        id: 10,
+        unitId: 5, // Unit 1 learn the basic of English
         order: 5,
         title: "Verbs",
       },
@@ -78,45 +72,106 @@ const main = async () => {
 
     await db.insert(schema.challenges).values([
       {
-        id: 1,
-        lessonId: 1,
+        id: 6,
+        lessonId: 6,
         type: "SELECT",
         order: 1,
         question: 'Which one of these is the "the man"?',
       },
-      // {
-      //   id: 2,
-      //   lessonId: 2,
-      //   type: "SELECT",
-      //   order: 1,
-      //   question: 'Which one of these is the "the man"?',
-      // },
+      {
+        id: 7,
+        lessonId: 6,
+        type: "ASSIST",
+        order: 2,
+        question: '"The man"',
+      },
+      {
+        id: 8,
+        lessonId: 6,
+        type: "ASSIST",
+        order: 3,
+        question: 'Which one of these is the "the robot"?',
+      },
     ]);
 
     await db.insert(schema.challengeOptions).values([
       {
-        id: 1,
-        challengeId: 1,
-        imageSrc: "/man.svg",
+        id: 4,
+        challengeId: 6,
+        imageSrc: "/man.jfif",
         correct: true,
-        text: "el hombre",
-        audioSrc: "/es_man.mp3",
+        text: "Man",
+        audioSrc: "/uk_man.mp3",
       },
       {
-        id: 2,
-        challengeId: 1,
-        imageSrc: "/woman.svg",
-        correct: true,
-        text: "la mujer",
-        audioSrc: "/es_woman.mp3",
+        id: 5,
+        challengeId: 6,
+        imageSrc: "/woman.jfif",
+        correct: false,
+        text: "Woman",
+        audioSrc: "/uk_woman.mp3",
       },
       {
-        id: 3,
-        challengeId: 1,
-        imageSrc: "/robot.svg",
+        id: 6,
+        challengeId: 6,
+        imageSrc: "/robot.jfif",
+        correct: false,
+        text: "Robot",
+        audioSrc: "/uk_robot.mp3",
+      },
+    ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        id: 7,
+        challengeId: 7,
+        imageSrc: "",
+        correct: false,
+        text: "Man",
+        audioSrc: "/uk_man.mp3",
+      },
+      {
+        id: 8,
+        challengeId: 7,
+        imageSrc: "",
         correct: true,
-        text: "el robot",
-        audioSrc: "/es_robot.mp3",
+        text: "Woman",
+        audioSrc: "/uk_woman.mp3",
+      },
+      {
+        id: 9,
+        challengeId: 7,
+        imageSrc: "",
+        correct: false,
+        text: "Robot",
+        audioSrc: "/uk_robot.mp3",
+      },
+    ]);
+
+    await db.insert(schema.challengeOptions).values([
+      {
+        id: 10,
+        challengeId: 8,
+        imageSrc: "/man.jfif",
+        correct: false,
+        text: "Man",
+        audioSrc: "/uk_man.mp3",
+      },
+      {
+        id: 11,
+        challengeId: 8,
+        imageSrc: "/woman.jfif",
+        correct: false,
+        text: "Woman",
+        audioSrc: "/uk_woman.mp3",
+      },
+      {
+        id: 12,
+        challengeId: 8,
+        imageSrc: "/robot.jfif",
+        correct: true,
+        text: "Robot",
+        audioSrc: "/uk_robot.mp3",
       },
     ]);
 

@@ -4,11 +4,10 @@ import { auth } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import {
   challengeProgress,
-  challenges,
   courses,
   userProgress,
 } from "@/db/schema";
-import { units, lessons } from "./schema";
+import { units, lessons, challenges } from "./schema";
 
 export const getUserProgress = cache(async () => {
   const { userId } = auth();
@@ -55,13 +54,21 @@ export const getUnits = cache(async () => {
 
   const normalizedData = data.map((unit) => {
     const lessonsWithCompletedStatus = unit.lessons.map((lesson) => {
-      const allCompletedChallenges = lesson.challenges.every((challenge) => {
-        return (
-          challenge.challengeProgress &&
-          challenge.challengeProgress.length > 0 &&
-          challenge.challengeProgress.every((progress) => progress.completed)
-        );
-      });
+      if (lesson.challenges.length === 0) {
+        return { ...lesson, completed: false };
+      }
+
+      const allCompletedChallenges = lesson.challenges.every(
+        (challenge) => {
+          return (
+            challenge.challengeProgress &&
+            challenge.challengeProgress.length > 0 &&
+            challenge.challengeProgress.every(
+              (progress) => progress.completed
+            )
+          );
+        }
+      );
 
       return {
         ...lesson,
@@ -89,7 +96,7 @@ export const getCourseById = cache(async (courseId: number) => {
 });
 
 export const getCourseProgress = cache(async () => {
-  const { userId } = auth();
+  const { userId } = await auth();
   const userProgress = await getUserProgress();
 
   if (!userId || !userProgress?.activeCourseId) {
@@ -174,7 +181,9 @@ export const getLesson = cache(async (id?: number) => {
     const completed =
       challenge.challengeProgress &&
       challenge.challengeProgress.length > 0 &&
-      challenge.challengeProgress.every((progress) => progress.completed);
+      challenge.challengeProgress.every(
+        (progress) => progress.completed
+      );
 
     return {
       ...challenge,
@@ -182,5 +191,29 @@ export const getLesson = cache(async (id?: number) => {
     };
   });
 
-  return { data, challenge: normalizedChallenges };
+  return { ...data, challenges: normalizedChallenges };
+});
+
+export const getLessonPercentage = cache(async () => {
+  const courseProgress = await getCourseProgress();
+
+  if (!courseProgress?.activeLessonId) {
+    return 0;
+  }
+
+  const lesson = await getLesson(courseProgress.activeLessonId);
+
+  if (!lesson) {
+    return 0;
+  }
+
+  const completedChallenges = lesson.challenges.filter(
+    (challenge) => challenge.completed
+  );
+
+  const percentage = Math.round(
+    (completedChallenges.length / lesson.challenges.length) * 100
+  );
+
+  return percentage;
 });
