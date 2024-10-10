@@ -100,7 +100,7 @@ const main = async () => {
       {
         id: 4,
         challengeId: 6,
-        imageSrc: "/man.jfif",
+        imageSrc: "/man.svg",
         correct: true,
         text: "Man",
         audioSrc: "/uk_man.mp3",
@@ -108,7 +108,7 @@ const main = async () => {
       {
         id: 5,
         challengeId: 6,
-        imageSrc: "/woman.jfif",
+        imageSrc: "/woman.svg",
         correct: false,
         text: "Woman",
         audioSrc: "/uk_woman.mp3",
@@ -116,7 +116,7 @@ const main = async () => {
       {
         id: 6,
         challengeId: 6,
-        imageSrc: "/robot.jfif",
+        imageSrc: "/robot.svg",
         correct: false,
         text: "Robot",
         audioSrc: "/uk_robot.mp3",
@@ -154,7 +154,7 @@ const main = async () => {
       {
         id: 10,
         challengeId: 8,
-        imageSrc: "/man.jfif",
+        imageSrc: "/man.svg",
         correct: false,
         text: "Man",
         audioSrc: "/uk_man.mp3",
@@ -162,7 +162,7 @@ const main = async () => {
       {
         id: 11,
         challengeId: 8,
-        imageSrc: "/woman.jfif",
+        imageSrc: "/woman.svg",
         correct: false,
         text: "Woman",
         audioSrc: "/uk_woman.mp3",
@@ -170,7 +170,7 @@ const main = async () => {
       {
         id: 12,
         challengeId: 8,
-        imageSrc: "/robot.jfif",
+        imageSrc: "/robot.svg",
         correct: true,
         text: "Robot",
         audioSrc: "/uk_robot.mp3",
@@ -206,7 +206,7 @@ const main = async () => {
       {
         id: 13,
         challengeId: 9,
-        imageSrc: "/man.jfif",
+        imageSrc: "/man.svg",
         correct: true,
         text: "Man",
         audioSrc: "/uk_man.mp3",
@@ -214,7 +214,7 @@ const main = async () => {
       {
         id: 14,
         challengeId: 9,
-        imageSrc: "/woman.jfif",
+        imageSrc: "/woman.svg",
         correct: false,
         text: "Woman",
         audioSrc: "/uk_woman.mp3",
@@ -222,7 +222,7 @@ const main = async () => {
       {
         id: 15,
         challengeId: 9,
-        imageSrc: "/robot.jfif",
+        imageSrc: "/robot.svg",
         correct: false,
         text: "Robot",
         audioSrc: "/uk_robot.mp3",
@@ -260,7 +260,7 @@ const main = async () => {
       {
         id: 19,
         challengeId: 11,
-        imageSrc: "/man.jfif",
+        imageSrc: "/man.svg",
         correct: false,
         text: "Man",
         audioSrc: "/uk_man.mp3",
@@ -268,7 +268,7 @@ const main = async () => {
       {
         id: 20,
         challengeId: 11,
-        imageSrc: "/woman.jfif",
+        imageSrc: "/woman.svg",
         correct: false,
         text: "Woman",
         audioSrc: "/uk_woman.mp3",
@@ -276,7 +276,7 @@ const main = async () => {
       {
         id: 21,
         challengeId: 11,
-        imageSrc: "/robot.jfif",
+        imageSrc: "/robot.svg",
         correct: true,
         text: "Robot",
         audioSrc: "/uk_robot.mp3",
